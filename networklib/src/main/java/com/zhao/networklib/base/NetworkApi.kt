@@ -2,6 +2,7 @@ package com.zhao.networklib.base
 
 import com.zhao.networklib.commoninterceptor.CommonRequestInterceptor
 import com.zhao.networklib.commoninterceptor.CommonResponseInterceptor
+import com.zhao.networklib.dns.TestDns
 import com.zhao.networklib.environment.EnvironmentActivity
 import com.zhao.networklib.environment.IEnvironment
 import com.zhao.networklib.errorhandler.HttpErrorHandler
@@ -10,6 +11,7 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -56,6 +58,12 @@ abstract class NetworkApi : IEnvironment {
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
                 okHttpClientBuilder.addInterceptor(httpLoggingInterceptor)
             }
+            okHttpClientBuilder.dns(TestDns())
+            val certificatePinner = CertificatePinner.Builder()
+                .add("sha256/a2bAjA/ldOdVOULMNoOhvk8HQr5iJB7N0d8fHYw2dR8=")
+                .add("sha256/GI75anSEdkuHj05mreE0Sd9jE6dVqUIzzXRHHlZBVbI=")
+                .build()
+            okHttpClientBuilder.certificatePinner(certificatePinner)
             okHttpClient = okHttpClientBuilder.build()
             return okHttpClient
         }

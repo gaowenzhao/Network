@@ -1,13 +1,11 @@
 package com.zhao.network.model
 
-import android.util.Log
 import com.zhao.network.bean.ArticleBean
 import com.zhao.network.bean.ArticleHistory
 import com.zhao.network.bean.ArticleZipBean
 import com.zhao.network.client.Client.wanAndroidApi
 import com.zhao.networklib.base.model.BaseModel
 import com.zhao.networklib.observer.BaseObserver
-import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 
 class MainModel : BaseModel() {
