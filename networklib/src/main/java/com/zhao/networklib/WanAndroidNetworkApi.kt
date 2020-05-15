@@ -21,7 +21,6 @@ class WanAndroidNetworkApi : NetworkApi() {
             val builder: Request.Builder = chain.request().newBuilder()
             builder.header("Content-Type", "application/json; charset=UTF-8")
             builder.header("client", "2")
-            builder.header("version", BuildConfig.VERSION_NAME)
             chain.proceed(builder.build())
         }
     }

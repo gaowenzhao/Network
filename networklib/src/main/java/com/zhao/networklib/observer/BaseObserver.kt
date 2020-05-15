@@ -1,7 +1,5 @@
 package com.zhao.networklib.observer
 
-import com.zhao.networklib.errorhandler.ExceptionHandle
-import com.zhao.networklib.errorhandler.ExceptionHandle.Companion.ResponeThrowable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
